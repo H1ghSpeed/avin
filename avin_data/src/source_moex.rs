@@ -85,13 +85,12 @@ impl SourceMoex {
     ) -> Result<DataFrame, AvinError> {
         // TODO: make this function private
 
-        let iid = Manager::find_iid("MOEX_SHARE_GAZP").unwrap(); // убрать
         let mut bars = DataFrame::empty_with_schema(&schema::bar_schema());
 
         let mut dt = from;
         while dt < till {
             let response = self
-                .try_request_bars(&iid, MarketData::BAR_1M, &dt, &till)
+                .try_request_bars(&_iid, MarketData::BAR_1M, &dt, &till)
                 .await
                 .unwrap();
             let json: serde_json::Value = match response.json().await {
