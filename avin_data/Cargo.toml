@@ -21,3 +21,6 @@ strum = { workspace = true }
 time-unit = { workspace = true }
 reqwest = { workspace = true }
 serde_json = { workspace = true }
+
+[profile.dev]
+debug = true

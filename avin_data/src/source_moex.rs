@@ -85,7 +85,7 @@ impl SourceMoex {
     ) -> Result<DataFrame, AvinError> {
         // TODO: make this function private
 
-        let mut bars = DataFrame::empty_with_schema(&schema::bar_schema());
+        let mut bars = DataFrame::empty_with_schema(&schema::bar_schema_asset());
 
         let mut dt = from;
         while dt < till {
@@ -106,6 +106,7 @@ impl SourceMoex {
             if part.height() <= 1 {
                 break;
             }
+            dbg!(&part);
             bars.extend(&part).unwrap();
 
             let last = get_last_dt(&part);

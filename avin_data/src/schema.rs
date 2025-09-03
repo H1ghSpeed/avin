@@ -23,6 +23,22 @@ pub fn bar_schema() -> Schema {
     ])
 }
 
+/// Polars dataframe schema for stock bars
+///
+/// # ru
+/// Возвращает polars схему датафрейма для баров акций
+pub fn bar_schema_asset() -> Schema {
+    Schema::from_iter(vec![
+        Field::new("ts_nanos".into(), DataType::Int64),
+        Field::new("open".into(), DataType::Float64),
+        Field::new("high".into(), DataType::Float64),
+        Field::new("low".into(), DataType::Float64),
+        Field::new("close".into(), DataType::Float64),
+        Field::new("volume".into(), DataType::Int64),
+    ])
+}
+
+
 /// Polars dataframe schema for tics
 ///
 /// # ru
